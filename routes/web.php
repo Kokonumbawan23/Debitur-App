@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Counter;
 use App\Livewire\DebiturList;
 use App\Livewire\DebiturPayments;
+use App\Livewire\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,9 @@ use App\Livewire\DebiturPayments;
 |
 */
 
-Route::view('/', 'welcome');
+Route::get('/', fn() => redirect()->route('login'));
 
-Route::view('dashboard', 'dashboard')
+Route::get('dashboard', Dashboard::class)
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 

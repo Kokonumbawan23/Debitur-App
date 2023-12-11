@@ -24,7 +24,7 @@ new class extends Component {
         <div class="bg-gray-600/30 rounded-md h-[1px] w-11/12 mx-auto my-6"></div>
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="{{ route('dashboard') }}" active="{{ request()->routeIs('dashboard') }}"
+                <a href="{{ route('dashboard') }}" active="{{ request()->routeIs('dashboard') }}" wire:navigate
                     class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -37,7 +37,7 @@ new class extends Component {
                 </a>
             </li>
             <li>
-                <a href="{{ route('debiturs') }}" active="{{ request()->routeIs('debiturs') }}"
+                <a href="{{ route('debiturs') }}" active="{{ request()->routeIs('debiturs') }}" wire:navigate
                     class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
@@ -46,6 +46,9 @@ new class extends Component {
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">{{ __('Daftar Debitur') }}</span>
                 </a>
+
+               <div class="bg-gray-600/30 rounded-md h-[1px] w-11/12 mx-auto my-6"></div>
+
             </li>
             <li>
                 <button wire:click="logout"

@@ -9,17 +9,18 @@
 
 
     @if (session()->has('success'))
-        <div class="bg-green-100 text-green-600 p-3 rounded-lg">
-            {{ session('success') }}
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+            role="alert">
+            <span class="font-medium">Success</span> {{ session('success') }}
         </div>
     @elseif (session()->has('fail'))
-        <div class="bg-red-100 text-red-600 p-3 rounded-lg">
-            {{ session('fail') }}
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <span class="font-medium">Fail</span> {{ session('fail') }}
         </div>
     @endif
 
-    <div>
-        <div class="max-w-7xl mx-auto ">
+    <div class="pb-4">
+        <div class="max-w-7xl mx-auto">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="w-full px-6 py-2 mt-4">
                     <div class="flex justify-between gap-5">
@@ -56,64 +57,61 @@
                     </div>
 
                 </div>
-                <div wire:loading>
-                    Load
-                </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                        <div class="relative overflow-x-auto">
-                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3">
-                                            Nomor Debitur
+                    <div class="relative overflow-x-auto">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Nomor Debitur
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Nama
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Alamat
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        No HP
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Aksi
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($debiturs as $debitur)
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $debitur->nomor_debitur }}
                                         </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Nama
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Alamat
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            No HP
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Aksi
-                                        </th>
+                                        <td class="px-6 py-4">
+                                            {{ $debitur->nama }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $debitur->alamat }}
+                                        </td class="px-6 py-4">
+                                        <td class="px-6 py-4">
+                                            {{ $debitur->nohp }}
+                                        </td>
+                                        <td wire:key="{{ $debitur->id }}" class="px-6 py-4">
+                                            <div class="flex p-2 justify-between items-center">
+                                                <a href="{{ route('debitur_detail', ['id' => $debitur->id]) }}"
+                                                    wire:navigate
+                                                    class="p-2 bg-green-800 rounded-md text-sm text-white hover:bg-green-900">
+                                                    Lihat
+                                                </a>
+                                            </div>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($debiturs as $debitur)
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <th scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $debitur->nomor_debitur }}
-                                            </th>
-                                            <td class="px-6 py-4">
-                                                {{ $debitur->nama }}
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                {{ $debitur->alamat }}
-                                            </td class="px-6 py-4">
-                                            <td class="px-6 py-4">
-                                                {{ $debitur->nohp }}
-                                            </td>
-                                            <td wire:key="{{ $debitur->id }}" class="px-6 py-4">
-                                                <div class="flex p-2 justify-between items-center">
-                                                    <a href="{{ route('debitur_detail', ['id' => $debitur->id]) }}"
-                                                        wire:navigate
-                                                        class="p-2 bg-green-800 rounded-md text-sm text-white hover:bg-green-900">
-                                                        Lihat
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                
+                </div>
+
             </div>
         </div>
     </div>

@@ -16,12 +16,12 @@
         
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-blue-500/80 dark:bg-gray-900">
+        <div class="min-h-screen bg-blue-500/80">
             <livewire:layout.navigation />
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="p-4 sm:ml-64">
+                <header class="px-4 pt-4 sm:ml-64">
                     <div class=" bg-white shadow max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 sm:rounded-lg">
                         {{ $header }}
                     </div>

@@ -34,8 +34,8 @@ class DebiturPayments extends Component
     public function hapusTagihan($id) {
         $tagihan = Tagihan::find($id);
         $cicilanTagihan = Tagihan::where('parent_id',$id)->get();
-        $cicilanTagihan->each->pembayaran()->delete();
-        $cicilanTagihan->each->delete();
+        $cicilanTagihan->each->dataPembayaran()->each->delete();
+        // $cicilanTagihan->each->delete();
         $tagihan->delete();
         return redirect()->route('debitur_detail',$tagihan->debitur_id);
     }

@@ -59,7 +59,7 @@ class PembayaranModal extends Component
             $tagihan = Tagihan::find($this->tagihan_id);
             $parent = Tagihan::find($tagihan->parent_id);
 
-            $form['keterangan'] = 'Pembayaran ' . strtolower($tagihan->keterangan). ' Tanggal: ' . date('Y-m-d',strtotime($tagihan->tanggal)).'. Keterangan: '. $form['keterangan'];
+            $form['keterangan'] = 'Pembayaran ' . $tagihan->keterangan. '. Tanggal: ' . date('Y-m-d',strtotime($tagihan->tanggal).'. Keterangan: '. $form['keterangan']);
 
             $status = Pembayaran::create($form);
 
