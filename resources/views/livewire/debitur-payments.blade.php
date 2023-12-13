@@ -24,7 +24,10 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
                 <div class="p-6 px-8 text-gray-900 dark:text-gray-100">
                     <div class="p-3 text-2xl font-bold flex justify-between">
-                        <h2>{{ $debitur->nama }}</h2>
+                        <div>
+                            <h2>{{ $debitur->nama }}</h2>
+                            <span class="text-lg font-thin">{{ $debitur->nomor_debitur }}</span>
+                        </div>
                         <livewire:tagihan-modal :debitur_id="$debitur->id" />
                     </div>
                     <div class="p-4">Jumlah Tagihan : Rp {{ $totaltagihan }}</div>

@@ -21,15 +21,24 @@
 
                 <div class="block max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow">
                     <div class="mx-auto my-2">
-                        <h2 class="mb-4 text-4xl font-bold tracking-tight text-gray-900">
-                            {{ $tagihan_terdekat->tanggal->format('d M Y') }}
-                        </h2>
-                        <p class="text-xl font-bold mb-2">
-                            {{ number_format($tagihan_terdekat->jumlah, 0, ',', '.') }}
-                        </p>
-                        <p class="text-xl">
-                            {{ $tagihan_terdekat->debitur->nama }}
-                        </p>
+                        @if ($tagihan_terdekat)
+                            <h5 class="text-2xl font-bold tracking-tight text-gray-900 py-3">
+                                {{ $tagihan_terdekat->nama }}
+                            </h5>
+                            <h5 class="text-2xl font-bold tracking-tight text-gray-900 py-3">
+                                {{ $tagihan_terdekat->tanggal_tagihan }}
+                            </h5>
+                            <h5 class="text-2xl font-bold tracking-tight text-gray-900 py-3">
+                                {{ $tagihan_terdekat->total_tagihan }}
+                            </h5>
+                            <h5 class="text-2xl font-bold tracking-tight text-gray-900 py-3">
+                                {{ $tagihan_terdekat->status }}
+                            </h5>
+                           @else
+                            <h5 class="text-2xl font-bold tracking-tight text-gray-900 py-3">
+                                Tidak ada tagihan
+                            </h5> 
+                        @endif
                     </div>
                     <p class="font-normal text-gray-500">
                         Tagihan terdekat
